@@ -1,2 +1,2 @@
-# JavaScript
-Learn a new programming language 
+# To Do List
+Make to do list by JavaScript
