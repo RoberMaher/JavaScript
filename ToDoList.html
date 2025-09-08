@@ -207,7 +207,14 @@
         }
     }
 
-
+    function editTask(index){
+        let task = tasks[index]
+        const newTitle = prompt("Edit the task title:", task.title);
+        if (newTitle !== null && newTitle.trim() !== "") {
+            task.title = newTitle.trim();
+            renderTasks(); // refresh the DOM with updated title
+        }
+    }
 </script>
 
 
