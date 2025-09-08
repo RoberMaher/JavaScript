@@ -1,0 +1,94 @@
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TO DO LIST</title>
+    <style>
+        body{
+            background-color: rgb(30, 0, 77);
+        }
+
+        .tasks-table{
+            background-color: rgb(239, 239, 239);
+            width: 60%;
+            /* height: 500px; */
+            margin-top: 130px;
+        }
+
+        button{
+            border: none;
+            font-size: 20px;
+            box-shadow: 0px 3px 5px rgba(168 ,168 ,168 ,0.38);
+        }
+
+        button.circular{
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        .task{
+            display: flex;
+            background-color: white;
+            padding: 4px;
+            border-bottom: solid black 1px;
+            transition: box-shadow 2ms;
+        }
+        .task:hover{
+            box-shadow: 0PX 3PX 15PX rgba(97, 97, 97, 0.843);
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <!-- CENTER DIV -->
+        <div style="display: flex; justify-content: center; align-items: center;">
+
+            <!-- TASK TABLE -->
+            <div class = "tasks-table">
+                <!-- HEADER -->
+                <div style="width: 100%; background-color: rgb(92, 52, 155); color: white; padding-top: 8px; padding-bottom: 8px; text-align: center;">
+                    <h1 style="display: inline;">My Tasks</h1>
+                    <button class ="circular" style="float: right; background-color: white; margin-right:10px ;">
+                        add
+                    </button>
+                </div>
+                <!--// HEADER //-->
+
+                <!-- TASKS -->
+                 <div class="tasks" style="padding: 20px;">
+                    <!-- TASK -->
+                    <div class="task">
+
+                        <!-- TASKS INFO -->
+                        <div style="width: 70%;">
+                            <h2>Read a Book</h2>
+
+                            <div>
+                                <span>
+                                    9/8/2025
+                                </span>
+                            </div>
+                        </div>
+                        <!--// TASKS INFO //-->
+
+                        <!-- TASKS ACTIO -->
+                        <div style="display: flex; justify-content: space-evenly; align-items: center; width: 30%;">
+                            <button class="circular" style="background-color: rgb(114,0,0); color: white;">D</button>
+                            <button class="circular" style="background-color: rgb(0, 150, 30); color: white;">C</button>
+                            <button class="circular" style="background-color: rgba(0, 16, 197, 0.692); color: white;">E</button>
+                        </div>
+                        <!--// TASKS ACTIO //-->
+
+                    </div>
+                    <!--// TASK //-->
+                 </div>
+                <!--// TASKS //-->
+            </div>
+            <!--// TASK TABLE //-->
+
+        </div>
+        <!--// CENTER DIV //-->
+    </div>
+
+</body></html>
