@@ -48,6 +48,9 @@
             border-bottom: solid black 1px;
             transition: box-shadow 2ms;
         }
+        .done {
+            background-color: rgb(158, 253, 160);
+        }
         .task:hover{
             box-shadow: 0PX 3PX 15PX rgba(97, 97, 97, 0.843);
         }
@@ -151,9 +154,9 @@
     function renderTasks() {
         let index = 0
         tasksDiv.innerHTML = "";
-        for (const task of tasks) {
+        for (task of tasks) {
             tasksDiv.innerHTML += `
-                <div class="task">
+                <div class="task ${task.isDone ? 'done' : ''}">
                     <div style="width: 70%;">
                         <h2>${task.title}</h2>
                         <div>
@@ -168,9 +171,9 @@
                             </span>
                         </button>
                        
-                        <button class="circular" style="background-color: rgb(0,150,30); color: white;">
-                            <span class="material-symbols-outlined">
-                                check
+                        <button onclick="toggleDone(${index})" class="circular" style=" ${task.isDone ? "background-color: rgb(118,0,101);" : "background-color: rgb(0,150,30);"}  color: white;">
+                             <span class="material-symbols-outlined">
+                                ${task.isDone ? "close" : "check"}
                             </span>
                         </button>
                         
@@ -215,6 +218,12 @@
             renderTasks(); // refresh the DOM with updated title
         }
     }
+
+    function toggleDone(index) {
+        tasks[index].isDone = !tasks[index].isDone; // flip true/false
+        renderTasks();
+    }
+
 </script>
 
 
