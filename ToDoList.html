@@ -236,6 +236,8 @@
         const data = localStorage.getItem("tasks");
         if (data) {
             tasks = JSON.parse(data);
+        }else{
+            tasks = []
         }
     }
 
