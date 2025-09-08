@@ -31,6 +31,9 @@
             font-size: 20px;
             box-shadow: 0px 3px 5px rgba(168 ,168 ,168 ,0.38);
         }
+        .button:hover{
+            box-shadow: 0PX 3PX 15PX rgba(97, 97, 97, 0.843);
+        }
 
         button.circular{
             width: 40px;
@@ -63,7 +66,7 @@
                 <!-- HEADER -->
                 <div style="width: 100%; background-color: rgb(92, 52, 155); color: white; padding-top: 8px; padding-bottom: 8px; text-align: center;">
                     <h1 style="display: inline;">My Tasks</h1>
-                    <button class ="circular" style="float: right; background-color: white; margin-right:10px ;">
+                    <button id="addButton" class ="circular" style="float: right; background-color: white; margin-right:10px ;">
                         <span class="material-symbols-outlined">
                             add
                         </span>
@@ -72,7 +75,7 @@
                 <!--// HEADER //-->
 
                 <!-- TASKS -->
-                 <div class="tasks" style="padding: 20px;">
+                 <div id="tasks" class="tasks" style="padding: 20px;">
                     <!-- TASK -->
                     <div class="task">
 
@@ -100,7 +103,7 @@
                             </button>
                             <button class="circular" style="background-color: rgb(0, 150, 30); color: white;">
                                 <span class="material-symbols-outlined">
-                                    content_copy
+                                    check
                                 </span>
                             </button>
                             <button class="circular" style="background-color: rgba(0, 16, 197, 0.692); color: white;">
@@ -112,7 +115,7 @@
                         <!--// TASKS ACTIO //-->
 
                     </div>
-                    <!--// TASK //-->
+                    <!--// TASK // -->
                  </div>
                 <!--// TASKS //-->
             </div>
@@ -122,4 +125,81 @@
         <!--// CENTER DIV //-->
     </div>
 
-</body></html>
+</body>
+
+<script>
+    let tasks = [
+        {
+            title: "Read a Book",
+            date: "9/8/2025",
+            isDone: false 
+        },
+        {   
+            title: "Make Final Project",
+            date: "9/8/2025", 
+            isDone: false 
+        },
+        {
+            title: "Done JavaScript Course", 
+            date: "9/8/2025", 
+            isDone: false 
+        }
+    ];
+
+    const tasksDiv = document.getElementById("tasks");
+
+    function renderTasks() {
+        let index = 0
+        tasksDiv.innerHTML = "";
+        for (const task of tasks) {
+            tasksDiv.innerHTML += `
+                <div class="task">
+                    <div style="width: 70%;">
+                        <h2>${task.title}</h2>
+                        <div>
+                            <span class="material-symbols-outlined">calendar_month</span>
+                            <span>${task.date}</span>
+                        </div>
+                    </div>
+                    <div style="display: flex; justify-content: space-evenly; align-items: center; width: 30%;">
+                        <button onclick="deleteTask(${index})" class="circular" style="background-color: rgb(114,0,0); color: white;">
+                            <span class="material-symbols-outlined">
+                                delete
+                            </span>
+                        </button>
+                       
+                        <button class="circular" style="background-color: rgb(0,150,30); color: white;">
+                            <span class="material-symbols-outlined">
+                                check
+                            </span>
+                        </button>
+                        
+                        <button onclick="editTask(${index})" class="circular" style="background-color: rgba(0,16,197,0.692); color: white;">
+                            <span class="material-symbols-outlined">
+                                edit
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            `;
+            index++
+        }
+    }
+
+    // initial render
+    renderTasks();
+
+    document.getElementById("addButton").addEventListener("click", function () {
+        const title = prompt("Please Enter Title of the Mission:");
+        if (!title) return; // user cancelled
+        const today = new Date();
+        const dateStr = `${today.getMonth() + 1}/${today.getDate()}/${today.getFullYear()}`;
+        tasks.push({ title, date: dateStr, isDone: false });
+        renderTasks(); // refresh the DOM
+    });
+
+
+</script>
+
+
+</html>
