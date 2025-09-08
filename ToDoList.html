@@ -198,6 +198,15 @@
         renderTasks(); // refresh the DOM
     });
 
+    function deleteTask(index) {
+        let task = tasks[index]
+        const sure = confirm(`Are you sure you want to delete ${task.title}?`);
+        if (sure) {
+            tasks.splice(index, 1);
+            renderTasks(); // refresh the DOM
+        }
+    }
+
 
 </script>
 
