@@ -198,7 +198,8 @@
         const today = new Date();
         const dateStr = `${today.getMonth() + 1}/${today.getDate()}/${today.getFullYear()}`;
         tasks.push({ title, date: dateStr, isDone: false });
-        renderTasks(); // refresh the DOM
+        saveTasks();
+        renderTasks();
     });
 
     function deleteTask(index) {
@@ -206,7 +207,8 @@
         const sure = confirm(`Are you sure you want to delete ${task.title}?`);
         if (sure) {
             tasks.splice(index, 1);
-            renderTasks(); // refresh the DOM
+            saveTasks();
+            renderTasks();
         }
     }
 
@@ -215,14 +217,31 @@
         const newTitle = prompt("Edit the task title:", task.title);
         if (newTitle !== null && newTitle.trim() !== "") {
             task.title = newTitle.trim();
+            saveTasks();
             renderTasks(); // refresh the DOM with updated title
         }
     }
 
     function toggleDone(index) {
         tasks[index].isDone = !tasks[index].isDone; // flip true/false
+        saveTasks();
         renderTasks();
     }
+
+    function saveTasks() {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+    }
+
+    function loadTasks() {
+        const data = localStorage.getItem("tasks");
+        if (data) {
+            tasks = JSON.parse(data);
+        }
+    }
+
+    // call before first render
+    loadTasks();
+    renderTasks();
 
 </script>
 
